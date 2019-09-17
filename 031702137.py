@@ -58,6 +58,10 @@ def make_four(temp):
 	if vis==-1:
 		vis=temp.find('乡')
 	if vis==-1:
+		vis=temp.find('工业园')
+		if vis!=-1:
+			vis=vis+2
+	if vis==-1:
 		return '',temp
 	else:
 		return temp[:vis+1],temp[vis+1:]
