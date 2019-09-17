@@ -38,6 +38,9 @@ def make_city(temp):
 		temp=temp[1:]
 	if city[-1]!='州':
 		city+='市'
+	else:
+		if len(city)<=2:
+			city+='市'
 	return city,temp
 
 def make_three(temp):
@@ -52,7 +55,9 @@ def make_three(temp):
 		return temp[:vis+1],temp[vis+1:]
 		
 def make_four(temp):
-	vis=temp.find('道')
+	vis=temp.find('街道')
+	if vis!=-1:
+		vis=vis+1
 	if vis==-1:
 	   vis=temp.find('镇')
 	if vis==-1:
@@ -68,6 +73,8 @@ def make_four(temp):
 
 def make_five(temp):
 	vis=temp.find('路')
+	if vis==-1:
+		vis=temp.find('街')
 	if vis==-1:
 		return '',temp
 	else:
